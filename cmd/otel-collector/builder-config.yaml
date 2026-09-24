@@ -1,7 +1,7 @@
 dist:
   module: github.com/open-telemetry/opentelemetry-collector-contrib/cmd/otel-collector
   name: otel-collector
-  description: "OpenTelemetry Collector Contrib - Stage 2: OTLP + configfile + Redfish receivers, configwatch_snapshot + Batch + Filter processors, OTLP HTTP + Prometheus remote write + ClickHouse exporters"
+  description: "OpenTelemetry Collector Contrib - Stage 2: OTLP + configfile + Redfish receivers, configwatch_snapshot + inventorydiff + Batch + Filter processors, OTLP HTTP + Prometheus remote write + ClickHouse exporters"
   version: 0.141.0
   output_path: ./cmd/otel-collector
 
@@ -18,6 +18,7 @@ extensions:
 processors:
   - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.141.0
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/configwatchsnapshot v0.141.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/inventorydiff v0.141.0
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.141.0
 
 exporters:
@@ -28,6 +29,7 @@ exporters:
 # Local fork modules: not published on go.opentelemetry.io / upstream contrib at this path+version.
 replaces:
   - github.com/open-telemetry/opentelemetry-collector-contrib/processor/configwatchsnapshot => ../../processor/configwatchsnapshot
+  - github.com/open-telemetry/opentelemetry-collector-contrib/processor/inventorydiff => ../../processor/inventorydiff
   - github.com/open-telemetry/opentelemetry-collector-contrib/receiver/configfilereceiver => ../../receiver/configfilereceiver
   - github.com/open-telemetry/opentelemetry-collector-contrib/receiver/redfisheventreceiver => ../../receiver/redfisheventreceiver
   - github.com/open-telemetry/opentelemetry-collector-contrib/receiver/redfishlogreceiver => ../../receiver/redfishlogreceiver
